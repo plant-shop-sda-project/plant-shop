@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <title>Create user</title>
+</head>
+
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<body>
+<form method="post" th:action="@{/admin/users/save}" th:object="${user}">
+
+  <label>
+    Username:
+    <input type="text" th:field="*{username}"/>
+  </label>
+
+  <label>
+    Roles:
+    <input type="text" th:field="*{roles}"/>
+  </label>
+
+  <button class="btn btn-primary" type="submit">Create user</button>
+
+</form>
+</body>
+</html>

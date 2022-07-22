@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration form</title>
+</head>
+
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<body>
+
+<h1>Registration page</h1>
+
+<p th:text="${exceptionMessage}"/>
+
+<form method="post" th:action="@{/register}" th:object="${emptyUser}">
+
+    Username:
+    <input type="text" th:field="*{username}">
+
+    Password:
+    <input type="password" th:field="*{password}">
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+
+</body>
+</html>

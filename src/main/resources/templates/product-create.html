@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Product</title>
+</head>
+
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<body>
+
+<form method="post" th:action="@{/admin/product/save}" th:object="${emptyProduct}">
+
+    <label>
+        Tytuł:
+        <input type="text" th:field="*{title}"/>
+        <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
+    </label>
+    <label>
+        Opis:
+        <input type="text" th:field="*{description}"/>
+    </label>
+    <label>
+        <!-- zapytac o miniaturke-->
+        Miniaturka:
+        <input type="text" th:field="*{miniature}"/>
+    </label>
+    <label>
+        Kategoria:
+        <input type="text" th:field="*{category}"/>
+    </label>
+
+    <label>
+        Cena:
+        <!-- zapytac o double-->
+        <input type="text" th:field="*{price}"/>
+    </label>
+    <label>
+        Enum Typ:
+        <!-- zapytac o typ-->
+        <input type="text" th:field="*{type}"/>
+    </label>
+    <label>
+        Autor:
+        <input type="text" th:field="*{author}"/>
+        <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}"/>
+    </label>
+    <button type="submit" class="btn btn-primary">Dodaj produkt</button>
+</form>
+</body>
+</html>

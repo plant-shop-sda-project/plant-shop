@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Users list</title>
+</head>
+<body>
+Logged as <p sec:authentication="name"/>
+
+<a th:href="@{/logout}">Logout</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Roles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"/>
+        <td th:text="${user.roles}"/>
+        <td><a th:href="@{/admin/users/delete/{username}/(username=${user.username})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
