@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product details</title>
+</head>
+
+<link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Miniature</th>
+        <th scope="col">Category</th>
+        <th scope="col">Price</th>
+        <th scope="col">Type</th>
+        <th scope="col">Author</th>
+    </tr>
+    </thead>
+    <tbody>
+    <td th:text="${product.id}"/>
+    <td th:text="${product.title}"/>
+    <td th:text="${product.description}"/>
+    <td th:text="${product.miniature}"/>
+    <td th:text="${product.category}"/>
+    <td th:text="${product.price}"/>
+    <td th:text="${product.type}"/>
+    <td th:text="${product.author}"/>
+    </tbody>
+</table>
+
+<a th:href="@{/products/list}">Return to product list</a>
+
+</body>
+</html>
