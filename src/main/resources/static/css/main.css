@@ -1,0 +1,23 @@
+/*@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap");*/
+
+/*html {*/
+/*    font-family: "Lato", sans-serif;*/
+/*    font-size: 16px;*/
+/*}*/
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+nav li {
+    /*display: inline-block;*/
+    /*width: 150px;*/
+    flex: 1;
+    text-align: center;
+    background-color: antiquewhite;
+}
