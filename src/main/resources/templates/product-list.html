@@ -31,7 +31,7 @@ Logged as (thymeleaf) <p sec:authentication="name"/>
     <tr th:each="product : ${products}">
         <td th:text="${product.title}"/>
         <td th:text="${product.description}"/>
-        <td><img src="../assets/img/monstera-deliciosa.jpg" alt="Opis obrazka" border=3 height=150 width=150/></td>
+        <td><img th:src="${product.miniature}" alt="Opis obrazka"/></td>
         <td><a th:href="@{/product/{title}/(title=${product.title})}">details</a></td>
         <div sec:authorize="hasRole('ROLE_ADMIN')">
             <td><a th:href="@{/admin/product/edit/{title}/(title=${product.title})}">edit</a></td>
