@@ -5,26 +5,65 @@
     <title>Registration form</title>
 </head>
 
-<link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+<!-- MDB -->
+<link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css}" rel="stylesheet"/>
+<link th:href="@{css/style.css}" rel="stylesheet">
+<script
+        type="text/javascript"
+        th:src="@{https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js}"
+></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
 <body>
 
-<h1>Registration page</h1>
+<section class="vh-100 bg-image"
+         style="background-image: url('https://previews.dropbox.com/p/thumb/ABldu5MiihACLu4D434ohOJYiH3vLu6MtQrnUYtp66X2BySY4FTB7k2gku1vyNFGRroTCamh-48teJR53Fc8dsnDp-FuRzTaWKPyb3kxVJJfdnOP5JbUI3F2KfpmjvVCvLMz5TYuwOl6Q4fQcrY1X_D50skpckXFJkajCOzpnfbSToqp-umrBauut1lagqdVNGy5VsHnHIkv4HsBld70XzamnXnPgoQTH7cULvVTHaKEgED8wJhRH_cDq99aPj_8QQ0U5ZGvL76SLVwRyk3uwj4TpEB5fHZcWVyzOSEvgAwJRJnenemly3wb2PHXxHJuKqC6Hes-NKVHjFN7D5IQJHLgU9GWY7i1XYl9UQWqxI1IjfIWwEbiSwuJjiegpl7rV-Q/p.jpeg');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Registration form</h2>
 
-<p th:text="${exceptionMessage}"/>
+                            <p th:text="${exceptionMessage}" style="color: red"/>
 
-<form method="post" th:action="@{/register}" th:object="${emptyUser}">
+                            <form method="post" th:action="@{/register}" th:object="${emptyUser}">
 
-    Username:
-    <input type="text" th:field="*{username}">
+                                Username:
+                                <div class="form-outline mb-4">
+                                    <input type="text" th:field="*{username}" id="username"
+                                           class="form-control form-control-lg"/>
+                                    <label class="form-label" for="username"></label>
+                                </div>
 
-    Password:
-    <input type="password" th:field="*{password}">
+                                Password:
+                                <div class="form-outline mb-4">
+                                    <input type="password" th:field="*{password}" id="password"
+                                           class="form-control form-control-lg"/>
+                                    <label class="form-label" for="password"></label>
+                                </div>
 
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-success btn-block
+    btn-lg gradient-custom-4 text-body">Register
+                                    </button>
+                                </div>
 
+                                <p class="text-center text-muted mt-5 mb-0">Have already an account?
+                                    <a th:href="@{/login}" class="fw-bold text-body"><u>Login here</u></a></p>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 </body>
 </html>
