@@ -5,11 +5,11 @@
     <title>Admin panel</title>
 
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
 
 <div th:replace="fragments/fragment :: header"></div>
-<div th:insert="fragments/footer :: footer"></div>
 <div th:replace="navbar :: navbar"></div>
 
 <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
@@ -33,7 +33,7 @@
 <!--</nav>-->
 
 <!--<div th:insert="navbar :: navbar">  </div>-->
-
+<div class="jakis-kontener">
 <h1>Admin panel</h1>
 
 Logged as <p sec:authentication="name"/>
@@ -50,5 +50,8 @@ Logged as <p sec:authentication="name"/>
 
 <a th:href="@{/users/password/change}">Change password</a>
 
+</div>
+
+<div th:insert="fragments/footer :: footer"></div>
 </body>
 </html>

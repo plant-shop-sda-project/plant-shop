@@ -17,31 +17,35 @@
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
     <!--  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">-->
 </head>
-<body>
+<body style="
+background-image: url('https://cdn.pixabay.com/photo/2021/11/23/00/24/monstera-6817675_960_720.jpg');
+ background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;">
 
 <section class="vh-100 bg-image"
          style="background-image: url('https://previews.dropbox.com/p/thumb/ABldu5MiihACLu4D434ohOJYiH3vLu6MtQrnUYtp66X2BySY4FTB7k2gku1vyNFGRroTCamh-48teJR53Fc8dsnDp-FuRzTaWKPyb3kxVJJfdnOP5JbUI3F2KfpmjvVCvLMz5TYuwOl6Q4fQcrY1X_D50skpckXFJkajCOzpnfbSToqp-umrBauut1lagqdVNGy5VsHnHIkv4HsBld70XzamnXnPgoQTH7cULvVTHaKEgED8wJhRH_cDq99aPj_8QQ0U5ZGvL76SLVwRyk3uwj4TpEB5fHZcWVyzOSEvgAwJRJnenemly3wb2PHXxHJuKqC6Hes-NKVHjFN7D5IQJHLgU9GWY7i1XYl9UQWqxI1IjfIWwEbiSwuJjiegpl7rV-Q/p.jpeg');">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6" style="background: white">
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
-                            <h2 class="text-uppercase text-center mb-5">Login page</h2>
+                            <h2 class="text-uppercase text-center mb-5">Sign in</h2>
 
                             <form method="post" th:action="@{/login}">
 
                                 Login:
-                                <div class="form-outline mb-4">
+                                <div class="form-label-pm">
                                     <input type="text" name="username" id="username"
-                                           class="form-control form-control-lg"/>
+                                           class="form-control form-control-lg" placeholder="Enter your username here"/>
                                     <label class="form-label" for="username"></label>
                                 </div>
 
                                 Password:
-                                <div class="form-outline mb-4">
+                                <div class="form-label-pm">
                                     <input type="password" name="password" id="password"
-                                           class="form-control form-control-lg"/>
+                                           class="form-control form-control-lg" placeholder="Enter your password here"/>
                                     <label class="form-label" for="password"></label>
                                 </div>
 
