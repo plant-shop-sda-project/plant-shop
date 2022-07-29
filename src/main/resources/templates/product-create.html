@@ -3,14 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Product</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"
+          rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/style.scss}">
+    <!--scripts-->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 </head>
-
-<link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <body>
 
-<form method="post" th:action="@{/admin/product/save}" th:object="${emptyProduct}">
+<form class="form-horizontal" method="post" th:action="@{/admin/product/save}" th:object="${emptyProduct}">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend> Add a product </legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="product_id">Tytuł:</label>
+            <div class="col-md-4">
+                <input id="product_id" name="product_id" placeholder="PRODUCT ID"
+                       class="form-control input-md" required="" type="text"
+                       th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+            </div>
+        </div>
 
     <label>
         Tytuł:
@@ -47,6 +72,8 @@
         <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}"/>
     </label>
     <button type="submit" class="btn btn-primary">Dodaj produkt</button>
+
+    </fieldset>
 </form>
 </body>
 </html>
