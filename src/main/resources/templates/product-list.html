@@ -1,45 +1,118 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Product list</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"
+          rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/style.scss}">
 </head>
-
-<link rel="stylesheet" href="/webjars/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <body>
 
-Logged as <p th:text="${currentUser}"/>
+<!-- Navigation-->
+<div th:replace="fragments/header :: header"></div>
+<!--Logged as <p th:text="${currentUser}"/>-->
+<!--Logged as (thymeleaf) <p sec:authentication="name"/>-->
+<!--<a th:href="@{/logout}">Logout</a>-->
 
-Logged as (thymeleaf) <p sec:authentication="name"/>
+<section class="py-3">
+    <div class="container px-4 px-lg-5 mt-3">
 
-<a th:href="@{/logout}">Logout</a>
-
-<div sec:authorize="hasRole('ROLE_ADMIN')">
-    <a th:href="@{/admin/product/create}">Add new product</a>
-</div>
-
-<table>
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="product : ${products}">
-        <td th:text="${product.title}"/>
-        <td th:text="${product.description}"/>
-        <td><img th:src="${product.miniature}" alt="Opis obrazka"/></td>
-        <td><a th:href="@{/product/{title}/(title=${product.title})}">details</a></td>
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-            <td><a th:href="@{/admin/product/edit/{title}/(title=${product.title})}">edit</a></td>
-            <td><a th:href="@{/admin/product/delete/{title}/(title=${product.title})}">delete</a></td>
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <div class="col-sm-5">
+                            <p class="mb-0">If you want to add new product, select: </p>
+                        </div>
+                        <div class="col-sm-5">
+                            <p class="text-muted mb-0"><a th:href="@{/admin/product/create}">Add new product</a></p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
         </div>
-    </tr>
-    </tbody>
-</table>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" th:each="product : ${products}">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" th:src="${product.miniature}"
+                         style="width:auto;height: 250px;object-fit: cover;"
+                         alt="plant1"/>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product title-->
+                            <h5 class="fw-bolder"><span th:text="${product.title}"></span></h5>
+                            <!-- Product price-->
+                            <p class="card-text"
+                               style="  overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 2; /* number of lines to show */
+                                        -webkit-box-orient: vertical;">
+                                <span th:text="${product.price}"></span></p>
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                        th:href="@{/product/{title}/(title=${product.title})}">View details</a></div>
+                        <hr>
+                    </div>
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                        th:href="@{/admin/product/edit/{title}/(title=${product.title})}">Edit a product</a></div>
+                        <hr>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                        th:href="@{/admin/product/delete/{title}/(title=${product.title})}">Delete a product</a></div>
+                        <!--<td><a th:href="@{/admin/product/edit/{title}/(title=${product.title})}">edit</a></td>-->
+                        <!--<td><a th:href="@{/admin/product/delete/{title}/(title=${product.title})}">delete</a></td>-->
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!--<div sec:authorize="hasRole('ROLE_ADMIN')">-->
+<!--    <a th:href="@{/admin/product/create}">Add new product</a>-->
+<!--</div>-->
+<!--<table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Title</th>-->
+<!--        <th>Description</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="product : ${products}">-->
+<!--        <td th:text="${product.title}"/>-->
+<!--        <td th:text="${product.description}"/>-->
+<!--        <td><img th:src="${product.miniature}" alt="Opis obrazka"/></td>-->
+<!--        <td><a th:href="@{/product/{title}/(title=${product.title})}">details</a></td>-->
+<!--        <div sec:authorize="hasRole('ROLE_ADMIN')">-->
+<!--            <td><a th:href="@{/admin/product/edit/{title}/(title=${product.title})}">edit</a></td>-->
+<!--            <td><a th:href="@{/admin/product/delete/{title}/(title=${product.title})}">delete</a></td>-->
+<!--        </div>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<!-- Footer-->
+<div th:replace="fragments/footer :: footer"></div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
