@@ -1,57 +1,130 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Admin panel</title>
-
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"
+          rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="stylesheet" th:href="@{css/style.scss}">
 </head>
 <body>
 
-<div th:replace="fragments/fragment :: header"></div>
-<div th:replace="navbar :: navbar"></div>
+<!-- Navigation-->
+<div th:replace="fragments/header :: header"></div>
 
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--    <a class="navbar-brand" th:href="@{/products/list}">Show product list</a>-->
-<!--    <button class="navbar-toggler" type="button" data-toggle="collapse"-->
-<!--            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"-->
-<!--            aria-expanded="false" aria-label="Toggle navigation">-->
-<!--        <span class="navbar-toggler-icon"></span>-->
-<!--    </button>-->
-<!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--        <ul class="navbar-nav mr-auto">-->
-<!--            <li class="nav-item active">-->
-<!--                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--        <form class="form-inline my-2 my-lg-0">-->
-<!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</nav>-->
+<p class="text-center text-muted mt-5 mb-0">Go to index
+    <a href="/index" class="fw-bold text-body"><u> Index </u></a></p>
 
-<!--<div th:insert="navbar :: navbar">  </div>-->
-<div class="jakis-kontener">
-<h1>Admin panel</h1>
+<!-- Page content-->
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-4">
+                <h2 class="text-uppercase text-center mb-5">Admin panel</h2>
+                <!--Logged as <p sec:authentication="name"/>-->
+                <!--User Description-->
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="https://previews.dropbox.com/p/thumb/ABlFxxlTiAnA0itSVfsarV2yrf3GYRWERjy4JD9anbG2Vde0Ndu_bJ5DqHxhV3pv1sATNBdjpLy51uwKSOqi8KPvvc7u-hNHpRaHr39Acm_6JDQ9UsKp2FXM1CuiTaXArfSJIWq3zr7Xuk-WYKEnBpMj8GL39YXDX8Az9TnDrJKN-HO6t7qD_dTqD_21TZ9YyVsx4XwmHrFFdaD-xXAibfyuOP9NZZLzAOh6a2wz1_jIrtVv5XttvOALp4Vxtm0EfzTLrSgo2x7MtsYutCfsIsJgoKSHQdboqtSHXcvCN2yO-aG8FZ6yWtB5cAwJd4wGpjcxxuiP5EPptPod4nV-w7BzZ2h8bZfUO19gbdmKk36X7eboX-opUIzh4twZ6BIsb3E/p.jpeg"
+                             alt="avatar" class="rounded-circle img-fluid"
+                             style="width: 150px;height: 150px;object-fit: cover;">
+                        <h5 class="my-3"><span sec:authentication="name"/></span></h5>
+                        <div class="d-flex justify-content-center mb-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <!-- Panel Info-->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p class="mb-0">If you want to log out, select: </p>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="text-muted mb-0"><a th:href="@{/logout}">Logout</a></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p class="mb-0">To add a new product, select: </p>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="text-muted mb-0"><a th:href="@{/admin/product/create}">Add new product</a>
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p class="mb-0">To show product list, select: </p>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="text-muted mb-0"><a th:href="@{/products/list}">Show product list</a></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p class="mb-0">To show users list, select: </p>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="text-muted mb-0"><a th:href="@{/admin/users/list}">Show user list</a></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p class="mb-0">To add new user, select: </p>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="text-muted mb-0"><a th:href="@{/admin/users/create}">Add new user</a></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p class="mb-0">To change password, select: </p>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="text-muted mb-0"><a th:href="@{/users/password/change}">Change password</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-Logged as <p sec:authentication="name"/>
+<!--                <a th:href="@{/logout}">Logout</a>-->
 
-<a th:href="@{/logout}">Logout</a>
+<!--                <a th:href="@{/admin/product/create}">Add new product</a>-->
 
-<a th:href="@{/admin/product/create}">Add new product</a>
+<!--                <a th:href="@{/products/list}">Show product list</a>-->
 
-<a th:href="@{/products/list}">Show product list</a>
+<!--                <a th:href="@{/admin/users/list}">Show users list</a>-->
 
-<a th:href="@{/admin/users/list}">Show users list</a>
+<!--                <a th:href="@{/admin/users/create}">Add new user</a>-->
 
-<a th:href="@{/admin/users/create}">Add new user</a>
+<!--                <a th:href="@{/users/password/change}">Change password</a>-->
 
-<a th:href="@{/users/password/change}">Change password</a>
+            </div>
 
-</div>
 
-<div th:insert="fragments/footer :: footer"></div>
+        </div>
+    </div>
+
+</section>
+
+<div th:replace="fragments/footer :: footer"></div>
+
 </body>
 </html>
