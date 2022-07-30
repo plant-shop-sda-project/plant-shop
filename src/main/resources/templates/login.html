@@ -1,28 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Login page</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-<!--  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Login page</title>
+
+    <link rel="stylesheet" th:href="@{css/style.css}">
 
 </head>
 
-
 <body>
-<h1>Login page</h1>
 
-<form method="post" th:action="@{/login}">
+<section class="vh-100 bg-image"
+         style="background-image: url('https://previews.dropbox.com/p/thumb/ABldu5MiihACLu4D434ohOJYiH3vLu6MtQrnUYtp66X2BySY4FTB7k2gku1vyNFGRroTCamh-48teJR53Fc8dsnDp-FuRzTaWKPyb3kxVJJfdnOP5JbUI3F2KfpmjvVCvLMz5TYuwOl6Q4fQcrY1X_D50skpckXFJkajCOzpnfbSToqp-umrBauut1lagqdVNGy5VsHnHIkv4HsBld70XzamnXnPgoQTH7cULvVTHaKEgED8wJhRH_cDq99aPj_8QQ0U5ZGvL76SLVwRyk3uwj4TpEB5fHZcWVyzOSEvgAwJRJnenemly3wb2PHXxHJuKqC6Hes-NKVHjFN7D5IQJHLgU9GWY7i1XYl9UQWqxI1IjfIWwEbiSwuJjiegpl7rV-Q/p.jpeg');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Login page</h2>
 
-  Login:
-  <input type="text" name="username">
+                            <form method="post" th:action="@{/login}">
 
-  Password:
-  <input type="password" name="password">
+                                Login:
+                                <div class="form-outline mb-4">
+                                    <input type="text" name="username" id="username"
+                                           class="form-control form-control-lg"/>
+                                    <label class="form-label" for="username"></label>
+                                </div>
 
-  <button type="submit" class="btn btn-success">Log in</button>
-</form>
+                                Password:
+                                <div class="form-outline mb-4">
+                                    <input type="password" name="password" id="password"
+                                           class="form-control form-control-lg"/>
+                                    <label class="form-label" for="password"></label>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-success btn-block
+    btn-lg gradient-custom-4 text-body">Log in
+                                    </button>
+                                </div>
+
+                                <p class="text-center text-muted mt-5 mb-0">Don't have an account yet?
+                                    <a th:href="@{/registration}" class="fw-bold text-body"><u>Register here</u></a></p>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 </body>
 </html>
