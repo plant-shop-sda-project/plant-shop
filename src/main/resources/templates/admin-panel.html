@@ -13,12 +13,12 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"
           rel="stylesheet"/>
-    <link rel="stylesheet" th:href="@{css/style.css}">
-    <link rel="stylesheet" th:href="@{css/style.scss}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+<!--    <link rel="stylesheet" th:href="@{css/style.scss}">-->
 </head>
 <body>
 
-<!-- Navigation-->
+<!-- Header -->
 <div th:replace="fragments/header :: header"></div>
 
 <p class="text-center text-muted mt-5 mb-0">Go to index
@@ -103,22 +103,7 @@
                         </div>
                     </div>
                 </div>
-
-<!--                <a th:href="@{/logout}">Logout</a>-->
-
-<!--                <a th:href="@{/admin/product/create}">Add new product</a>-->
-
-<!--                <a th:href="@{/products/list}">Show product list</a>-->
-
-<!--                <a th:href="@{/admin/users/list}">Show users list</a>-->
-
-<!--                <a th:href="@{/admin/users/create}">Add new user</a>-->
-
-<!--                <a th:href="@{/users/password/change}">Change password</a>-->
-
             </div>
-
-
         </div>
     </div>
 

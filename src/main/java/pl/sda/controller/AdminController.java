@@ -29,20 +29,7 @@ public class AdminController {
 
     @GetMapping("/admin/users/list")
     public String showUserList(ModelMap modelMap) {
-        List<UserDto> userDtoList = new ArrayList<>();
-
-        for (User user : userService.findAll()) {
-            UserDto userDto = new UserDto(user.getUsername(),
-                    user.getRoles()
-                            .stream()
-                            .map(u -> u.getName() + " ")
-                            .collect(Collectors.joining())
-            );
-
-            userDtoList.add(userDto);
-        }
-
-        modelMap.addAttribute("users", userDtoList);
+        modelMap.addAttribute("users", userService.findAll());
         return "user-list";
     }
 
@@ -58,7 +45,6 @@ public class AdminController {
                 } else {
                     log.info("There is try to delete yourself user with username: " + username);
                 }
-
             } else {
                 log.info("User with username " + username + " not exists!");
             }

@@ -2,78 +2,90 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <title>Create Product</title>
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-          rel="stylesheet"/>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          rel="stylesheet"/>
-    <!-- MDB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"
-          rel="stylesheet"/>
-    <link rel="stylesheet" th:href="@{css/style.css}">
-    <link rel="stylesheet" th:href="@{css/style.scss}">
-    <!--scripts-->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 
 </head>
 <body>
 
-<form class="form-horizontal" method="post" th:action="@{/admin/product/save}" th:object="${emptyProduct}">
-    <fieldset>
+<div th:replace="fragments/header :: header"></div>
 
-        <!-- Form Name -->
-        <legend> Add a product </legend>
+<section class="vh-100 bg-image"
+         style="background-image: url('https://uc766ac0a7b0a2d0baa6a8b921d0.previews.dropboxusercontent.com/p/thumb/ABm8cQ0DVl0ttOm3RUvptNrwLo8Q41DDGAi0aiIKW9M-_1zvA9zsdVj-hDRhgj3jXGivYGZdm9IXUjouvaW_IPQnJZI_L0cKZsWKsgsuZyPhFOi5U1FKgqsCokjVvQFMwpgPgAZxy8m0h8n1ahr-9_YciGsrhKsYxxifPoEF22eNoXsz4Jweipa3ePIfZcwNS02tCSBA1sWF1IpJC40m42Wd_SYa8IQmQ8ic1CyT7-hiP8hSpFJtMaZxiSkmHiqqHqJk_f-YZPjidyIuqOznHnOoou7lPHyOc1aubGd7Oc94c2NXBxCYDpuziQpwwB3dTsCgD3VANRQmG7fr-pzjNXwDeM3KlpdwN3dwXp-1W9AOlFy8wsFixQ_37PMjPXlFjv2bPFFB_X-SXoeoWrAy_ldR63lS4EpvOTYyRM9qePS08Q/p.jpeg');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5"> Create Product </h2>
 
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="product_id">Tytuł:</label>
-            <div class="col-md-4">
-                <input id="product_id" name="product_id" placeholder="PRODUCT ID"
-                       class="form-control input-md" required="" type="text"
-                       th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+                            <form method="post" th:action="@{/admin/product/save}" th:object="${emptyProduct}">
+
+                                <!-- Form Name -->
+                                <legend> Add a product</legend>
+
+                                <!-- Text input-->
+                                Tytuł:
+                                <div class="form-outline mb-4">
+                                    <input type="text" th:field="*{title}" name="title" id="title"
+                                           class="form-control form-control-lg"/>
+                                    <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
+                                </div>
+
+                                Opis:
+                                <div class="form-outline mb-4">
+                                    <input type="text" th:field="*{description}" name="description" id="description"
+                                           class="form-control form-control-lg"/>
+                                </div>
+
+                                Miniaturka:
+                                <div class="form-outline mb-4">
+                                    <input type="text" th:field="*{miniature}" name="miniature" id="miniature"
+                                           class="form-control form-control-lg"/>
+                                </div>
+
+                                Kategoria:
+                                <div class="form-outline mb-4">
+                                    <input type="text"  th:field="*{category}" name="category" id="category"
+                                           class="form-control form-control-lg"/>
+                                </div>
+
+                                Cena:
+                                <div class="form-outline mb-4">
+                                    <input type="text"  th:field="*{price}" name="price" id="price"
+                                           class="form-control form-control-lg"/>
+                                </div>
+
+                                Enum Typ::
+                                <div class="form-outline mb-4">
+                                    <input type="text"  th:field="*{type}" name="type" id="type"
+                                           class="form-control form-control-lg"/>
+                                </div>
+
+                                Autor:
+                                <div class="form-outline mb-4">
+                                    <input type="text"  th:field="*{author}" name="author" id="author"
+                                           class="form-control form-control-lg"/>
+                                    <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}"/>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Dodaj produkt</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</section>
 
-    <label>
-        Tytuł:
-        <input type="text" th:field="*{title}"/>
-        <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
-    </label>
-    <label>
-        Opis:
-        <input type="text" th:field="*{description}"/>
-    </label>
-    <label>
-        <!-- zapytac o miniaturke-->
-        Miniaturka:
-        <input type="text" th:field="*{miniature}"/>
-    </label>
-    <label>
-        Kategoria:
-        <input type="text" th:field="*{category}"/>
-    </label>
+<div th:replace="fragments/footer :: footer"></div>
 
-    <label>
-        Cena:
-        <!-- zapytac o double-->
-        <input type="text" th:field="*{price}"/>
-    </label>
-    <label>
-        Enum Typ:
-        <!-- zapytac o typ-->
-        <input type="text" th:field="*{type}"/>
-    </label>
-    <label>
-        Autor:
-        <input type="text" th:field="*{author}"/>
-        <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}"/>
-    </label>
-    <button type="submit" class="btn btn-primary">Dodaj produkt</button>
-
-    </fieldset>
-</form>
 </body>
 </html>
