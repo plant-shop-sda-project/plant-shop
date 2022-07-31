@@ -13,16 +13,14 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css"
           rel="stylesheet"/>
-    <link rel="stylesheet" th:href="@{css/style.css}">
-    <link rel="stylesheet" th:href="@{css/style.scss}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+<!--    <link rel="stylesheet" th:href="@{css/style.scss}">-->
+
 </head>
 <body>
 
 <!-- Navigation-->
 <div th:replace="fragments/header :: header"></div>
-<!--Logged as <p th:text="${currentUser}"/>-->
-<!--Logged as (thymeleaf) <p sec:authentication="name"/>-->
-<!--<a th:href="@{/logout}">Logout</a>-->
 
 <section class="py-3">
     <div class="container px-4 px-lg-5 mt-3">
@@ -76,8 +74,7 @@
                         <hr>
                         <div class="text-center"><a class="btn btn-outline-dark mt-auto"
                         th:href="@{/admin/product/delete/{title}/(title=${product.title})}">Delete a product</a></div>
-                        <!--<td><a th:href="@{/admin/product/edit/{title}/(title=${product.title})}">edit</a></td>-->
-                        <!--<td><a th:href="@{/admin/product/delete/{title}/(title=${product.title})}">delete</a></td>-->
+
                         <hr>
                     </div>
                 </div>
@@ -86,29 +83,6 @@
     </div>
 </section>
 
-<!--<div sec:authorize="hasRole('ROLE_ADMIN')">-->
-<!--    <a th:href="@{/admin/product/create}">Add new product</a>-->
-<!--</div>-->
-<!--<table>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Title</th>-->
-<!--        <th>Description</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:each="product : ${products}">-->
-<!--        <td th:text="${product.title}"/>-->
-<!--        <td th:text="${product.description}"/>-->
-<!--        <td><img th:src="${product.miniature}" alt="Opis obrazka"/></td>-->
-<!--        <td><a th:href="@{/product/{title}/(title=${product.title})}">details</a></td>-->
-<!--        <div sec:authorize="hasRole('ROLE_ADMIN')">-->
-<!--            <td><a th:href="@{/admin/product/edit/{title}/(title=${product.title})}">edit</a></td>-->
-<!--            <td><a th:href="@{/admin/product/delete/{title}/(title=${product.title})}">delete</a></td>-->
-<!--        </div>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
 
 <!-- Footer-->
 <div th:replace="fragments/footer :: footer"></div>

@@ -1,6 +1,9 @@
 package pl.sda.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,6 +13,10 @@ import pl.sda.model.Product;
 import pl.sda.service.ProductService;
 
 import javax.validation.Valid;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 @Slf4j
 @Controller
@@ -29,10 +36,8 @@ public class ProductController {
     @GetMapping("/products/list")
     public String productList(ModelMap modelMap) {
         modelMap.addAttribute("products", productService.getAll());
-
         String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
         modelMap.addAttribute("currentUser", currentUser);
-
         return "product-list";
     }
 
@@ -45,12 +50,10 @@ public class ProductController {
     @PostMapping("/admin/product/save")
     public String handleNewProduct(@Valid @ModelAttribute("emptyProduct") Product product, Errors errors) {
         log.info("Handle new product: " + product);
-
         if (errors.hasErrors()) {
             log.error("Errors form frontend: " + errors.getFieldErrors());
             return "product-create";
         }
-
         productService.save(product);
         return "redirect:/products/list";
     }
@@ -75,7 +78,6 @@ public class ProductController {
             log.error("Errors form frontend: " + errors.getFieldErrors());
             return "product-edit";
         }
-
         productService.update(product);
         return "redirect:/product/list";
     }
@@ -92,7 +94,6 @@ public class ProductController {
                                           @RequestParam(defaultValue = "0") Integer pageNo,
                                           @RequestParam(defaultValue = "2") Integer pageSize,
                                           @RequestParam(defaultValue = "id") String sortBy) {
-
         modelMap.addAttribute("product", productService.getAll(pageNo, pageSize, sortBy));
         return "product-list";
     }

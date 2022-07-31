@@ -16,6 +16,7 @@ import pl.sda.util.PasswordValidator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -54,8 +55,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<UserDto> findAll() {
+
+        List<User> userList = userRepository.findAll();
+
+        List<UserDto> userDtoList = new ArrayList<>();
+
+        for (User user : userList) {
+            UserDto userDto = new UserDto(user.getUsername(),
+                    user.getRoles()
+                            .stream()
+                            .map(u -> u.getName() + " ")
+                            .collect(Collectors.joining())
+            );
+            userDtoList.add(userDto);
+        }
+        return userDtoList;
     }
 
     @Override

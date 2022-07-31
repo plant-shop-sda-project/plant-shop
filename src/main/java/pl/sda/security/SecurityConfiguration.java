@@ -24,9 +24,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 //pozwalaj zrealizować wszystkie żądania do określonych ścieżek i podścieżek
-                .antMatchers("/login", "/h2-console/**", "/registration", "/register")
+                .antMatchers("/login", "/h2-console/**", "/registration",
+                        "/register", "/css/style.css","/js/bootstrap.js","/css/style.scss")
                 .permitAll()
-                .antMatchers("/css/style.css","/js/bootstrap.js","/css/style.scss").permitAll()
+//                .antMatchers("/css/style.css","/js/bootstrap.js","/css/style.scss").permitAll()
                 //tylko user z rolą ADMIN może wyświetlić wszystko na podścieżkach /admin/
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 //wszyscy pozostali userzy mogą mieć dostęp z wymienionymi rolami do wszystkich ścieżek, które nie są  /admin/

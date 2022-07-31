@@ -15,7 +15,7 @@ public interface UserService {
 
     void save(User user);
 
-    List<User> findAll();
+    List<UserDto> findAll();
 
     void deleteByUsername(String username);
 

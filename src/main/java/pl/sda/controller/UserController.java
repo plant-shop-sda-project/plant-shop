@@ -44,14 +44,12 @@ public class UserController {
             modelMap.addAttribute("exceptionMessage", e.getMessage());
             return "user-change-password";
         }
-
         for (GrantedAuthority grantedAuthority : authentication.getAuthorities()) {
             switch (grantedAuthority.getAuthority()) {
                 case "ROLE_ADMIN":  return "redirect:/admin/panel";
                 case "ROLE_USER": return "redirect:/user/panel";
             }
         }
-
         throw new IllegalStateException("Unrecognized role");
     }
 
