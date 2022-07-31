@@ -22,7 +22,7 @@ public class Product {
     @Column(length = 1000)
     private String description;
 
-
+    @Column(length = 1000)
     private String miniature; // url? w jaki sposob mozemy zrealizowac
 
     private String category; //co to znaczy ze tu ma byc encja

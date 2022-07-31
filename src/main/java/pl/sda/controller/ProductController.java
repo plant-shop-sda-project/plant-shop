@@ -79,14 +79,14 @@ public class ProductController {
             return "product-edit";
         }
         productService.update(product);
-        return "redirect:/product/list";
+        return "redirect:/products/list";
     }
 
     @GetMapping("/admin/product/delete/{title}")
     public String deleteProduct(@PathVariable String title) {
         log.info("Deleted product with title " + title);
         productService.deleteByTitle(title);
-        return "redirect:/product/list";
+        return "redirect:/products/list";
     }
 
     @GetMapping("/product/list/params")
